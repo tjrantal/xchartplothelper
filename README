@@ -1,0 +1,9 @@
+A helper to plot data series with XChart (https://knowm.org/open-source/xchart/) in Octave.
+
+Octave 4.0.0 (currently the default version for the LTS Ubuntu) choked on segmentation fault when saving figures with subplots...
+
+Check build.gradle for building the project (https://gradle.org/)
+
+Look into testPlotHelper.m for intended use.
+
+Written by Timo Rantalainen 2018 tjrantal at gmail dot com. Released to public domain.

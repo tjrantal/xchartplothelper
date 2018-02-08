@@ -52,7 +52,19 @@ public class PlotXChart{
 	}
 	
 	public BufferedImage appendBI(BufferedImage bottomImage){
-		BufferedImage topImage = getBI();
+		return appendBI(bottomImage, false);
+	}
+	
+	public BufferedImage appendBI(BufferedImage bottomImage, boolean flipOrder){
+		BufferedImage topImage;
+		if (flipOrder){
+			//This image on the bottom
+			topImage = bottomImage;
+		 	bottomImage = getBI();
+		}else{
+			//This image on top
+			topImage = getBI();
+		}
 		int offset  = 0;
         int width = topImage.getWidth() > bottomImage.getWidth() ? topImage.getWidth() : bottomImage.getWidth();
         int height = topImage.getHeight() + bottomImage.getHeight();
@@ -72,7 +84,11 @@ public class PlotXChart{
 	}
 	
 	public void appendAndSavePNG(String saveName,BufferedImage bottomImage){
-		BufferedImage combined = appendBI(bottomImage);
+		appendAndSavePNG(saveName,bottomImage,false);
+	}
+	
+	public void appendAndSavePNG(String saveName,BufferedImage bottomImage, boolean flipOrder){
+		BufferedImage combined = appendBI(bottomImage,flipOrder);
 		//Write the image to a PNG file
 		try{
 			ImageIO.write(combined, "png", new File(saveName));
